@@ -1,8 +1,8 @@
 @(message: String)
 
-@main("OSF - Proof of Concept") {
+@main(message) {
     
-	<h1>OSF - Proof of Concept</h1>
+	<h1>@message</h1>
 	<h2>
 		Welcome to the proof of concept application for the Play Framework.
 	</h2>
@@ -15,15 +15,13 @@
 		 website: <a href="http://www.playframework.org/documentation/2.0/JavaCache" target="blank">
 		 http://www.playframework.org/documentation/2.0/JavaCache</a>
  	</p>
-	<a href="#">Start the demonstration</a><br/>
-	<a href="#">Link 1</a><br/>
-	<a href="#">Link 2</a><br/>
+	<a href="/cache">Go to the demonstration page</a><br/>
 	
 	
 	<h3>Live code modification</h3>
 	<p>
 		The goal of this part is to demonstrates how the play framework uses the on fly compilation,
-		 in order to avoid a rebuild and deployment for any change on the application.
+		in order to avoid a rebuild and deployment for any change on the application.
 	 </p>
 	<a href="#">Start the demonstration</a><br/>
 	<a href="#">Link 1</a><br/>

@@ -16,7 +16,7 @@ import play.mvc.*;
 
 public class CacheDemo extends Controller {
 
-	private static final String pageTitle = "Distributed cache demo";
+	private static final String pageTitle = "Distributed cache demo - Node 1";
 	private static Form<GlobalCacheValue> gcForm = form(GlobalCacheValue.class);
 	private static Form<UUIDCacheValue> uuidForm = form(UUIDCacheValue.class);
 	

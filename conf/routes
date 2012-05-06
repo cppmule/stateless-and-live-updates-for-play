@@ -20,3 +20,8 @@ GET		/cache/setincache			controllers.CacheDemo.setValueInGlobalCache()
 GET		/cache/getincacheuuid		controllers.CacheDemo.getValueInCacheWithUUID()
 GET		/cache/getincache			controllers.CacheDemo.getValueInGlobalCache()
 
+
+# Connector Demo
+GET		/connector/soap			controllers.ConnectorCtrl.callWithSOAP()
+GET		/connector/rest			controllers.ConnectorCtrl.callWithREST()
+GET		/connector/rmi				controllers.ConnectorCtrl.callWithRMI()

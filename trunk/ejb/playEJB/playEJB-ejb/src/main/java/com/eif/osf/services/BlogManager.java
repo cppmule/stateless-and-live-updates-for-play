@@ -10,16 +10,19 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.eif.osf.models.Message;
 import java.util.List;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 /**
  *
  * @author clementval
  */
-@Stateless
+
+@Stateless(name="EJB")
 public class BlogManager {
     @PersistenceContext
     EntityManager em;
-    
     
     public long insertMessage(String topic, String content) {
         Message msg = new Message();
@@ -30,17 +33,12 @@ public class BlogManager {
         return msg.getId();
     }
 
-    
     public Message getMessageById(long id) {
         Message msg = (Message)em.find(Message.class, id);
         return msg;
     }
     
-    
     public List getAllNotes() {
         return em.createQuery("SELECT n FROM Message n").getResultList();
     }
-    
-    
-    
 }

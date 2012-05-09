@@ -13,8 +13,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import com.eif.osf.services.BlogManager;
+import com.eif.osf.services.BlogManagerRemote;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -26,11 +28,10 @@ import javax.naming.NamingException;
  */
 
 @Path("service")
-@Stateless
 public class BlogAccess {
     
     @EJB
-    private BlogManager service;
+    private BlogManagerRemote service;
       
     /**
      * Creates a new instance of BlogResource
@@ -66,8 +67,10 @@ public class BlogAccess {
     @Produces("text/html")
     public String insertMessage(@PathParam("topic") String topic, @PathParam("content") String content){
         //long id = service.insertMessage(topic, content);
-        service.insertMessage(topic, content);
-        return "<html lang=\"en\"><body><h1>ID=/"+topic+"/"+content+"</body></h1></html>";
+        long id = 0;
+        if(service != null)
+            id = service.insertMessage(topic, content);
+        return "<html lang=\"en\"><body><h1>ID= "+id+"/"+topic+"/"+content+"</body></h1></html>";
     }
 
     private static Context getInitialContext() throws NamingException {  

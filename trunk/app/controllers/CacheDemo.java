@@ -17,8 +17,10 @@ import play.mvc.*;
 public class CacheDemo extends Controller {
 
 	private static final String pageTitle = "Distributed cache demo - Node 1";
+	private static final String uuidCacheKey = "testkey";
 	private static Form<GlobalCacheValue> gcForm = form(GlobalCacheValue.class);
 	private static Form<UUIDCacheValue> uuidForm = form(UUIDCacheValue.class);
+	
 	
 	public static String getCurrentTime(){
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
@@ -131,10 +133,10 @@ public class CacheDemo extends Controller {
 		}
 
 		// set in the cache
-		Cache.set(uuidToUse + "testkey", value);
+		Cache.set(uuidToUse + uuidCacheKey, value);
 
 		// access the cache to check the result
-		String cachedValue = (String) Cache.get(uuidToUse + "testkey");
+		String cachedValue = (String) Cache.get(uuidToUse + uuidCacheKey);
 		if (cachedValue == null) {
 			return ok(cacheuuid.render(pageTitle, getCurrentTime(), uuidForm, "The value "
 					+ value + " was not set successfully in the cache"));
@@ -155,7 +157,7 @@ public class CacheDemo extends Controller {
 							"No UUID has been found on the session, you need an UUID to work with the cache"));
 		}
 		// access the cache to check the result
-		String cachedValue = (String) Cache.get(uuid + "testkey");
+		String cachedValue = (String) Cache.get(uuid + uuidCacheKey);
 		if (cachedValue == null) {
 			return ok(cacheuuid.render(pageTitle, getCurrentTime(), uuidForm, "There is no value in the cache for the UUID" + uuid));
 		}

@@ -54,5 +54,15 @@
             <version>1.0-SNAPSHOT</version>
             <type>war</type>
         </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-grizzly2</artifactId>
+            <version>1.12</version>
+        </dependency>
     </dependencies>
 </project>

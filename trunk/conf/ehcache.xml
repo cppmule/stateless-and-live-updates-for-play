@@ -1,6 +1,7 @@
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../config/ehcache.xsd" updateCheck="false">
 
-<!-- 
+<!-- Default configuration for play cache: https://github.com/playframework/play/blob/master/framework/src/ehcache.xml
+
     <defaultCache
             maxElementsInMemory="10000"
             eternal="false"
@@ -14,31 +15,24 @@
     />
  -->
  
- <cacheManagerPeerProviderFactory
+	<cacheManagerPeerProviderFactory
 		class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
 		properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.1, multicastGroupPort=4446, timeToLive=32"/>
 		
-	<defaultCache name="sampleCache11"
-			maxEntriesLocalHeap="10000"
-			eternal="false"
-			timeToIdleSeconds="300"
-			timeToLiveSeconds="600"
-			overflowToDisk="false">
-		<cacheEventListenerFactory
-			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/>
- 	</defaultCache>
- 	<cacheManagerPeerProviderFactory
-			class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
-			properties="peerDiscovery=manual, rmiUrls=//localhost:40001/sampleCache11|//localhost:40002/sampleCache12"/>
- 	
- 	<cacheManagerPeerListenerFactory 
-			class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory" 
-			properties="hostName=localhost, port=40001, socketTimeoutMillis=2000"/>
- 
-</ehcache>
+	<cacheManagerPeerListenerFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+		properties="hostName=localhost, port=40001, socketTimeoutMillis=2000"/>
+		<!-- the port needs to be different on every node! Otherwise, all the configuration has to be identical on every node -->
+		
+	<defaultCache name="distribCache"
+		maxEntriesLocalHeap="10"
+		eternal="false"
+		timeToIdleSeconds="100"
+		timeToLiveSeconds="100"
+		overflowToDisk="false">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicatePuts=true, replicateUpdates=true, replicateUpdatesViaCopy=false, replicateRemovals=true "/>
+			
+	</defaultCache>
 
-<!-- 
-<ehcache>
-	
 </ehcache>
- -->

@@ -10,20 +10,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.eif.osf.models.Message;
 import java.util.List;
-import javax.jws.WebService;
 
 /**
  *
  * @author clementval
  */
 @Stateless
-@WebService
-public class BlogManager implements BlogManagerLocal {
-
+public class BlogManager {
     @PersistenceContext
     EntityManager em;
     
-    @Override
+    
     public long insertMessage(String topic, String content) {
         Message msg = new Message();
         msg.setTopic(topic);
@@ -33,13 +30,13 @@ public class BlogManager implements BlogManagerLocal {
         return msg.getId();
     }
 
-    @Override
+    
     public Message getMessageById(long id) {
         Message msg = (Message)em.find(Message.class, id);
         return msg;
     }
     
-    @Override
+    
     public List getAllNotes() {
         return em.createQuery("SELECT n FROM Message n").getResultList();
     }

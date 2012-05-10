@@ -19,10 +19,22 @@ import javax.ws.rs.Produces;
  * @author clementval
  */
 
-@Stateless(name="EJB")
+
+@Path("ejb")
+@Stateless
 public class BlogManager {
     @PersistenceContext
     EntityManager em;
+    
+    
+    @GET
+    @Path("test")
+    @Produces("text/html")
+    public String test(){
+        return "<h1>RESTful EJB<h1>";
+    }
+    
+    
     
     public long insertMessage(String topic, String content) {
         Message msg = new Message();

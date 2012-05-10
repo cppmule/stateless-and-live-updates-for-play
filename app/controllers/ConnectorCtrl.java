@@ -23,6 +23,10 @@ public class ConnectorCtrl extends Controller {
 	private static final String pageTitle = "Connector EJB Demo";
 
 	public static Result callWithSOAP() {
+		return ok();		
+	}
+	
+	public static Result callWithREST() {
 		String output = "NULL";
 		try {
  
@@ -50,10 +54,6 @@ public class ConnectorCtrl extends Controller {
  
 	  }
 	  return ok(index.render(output));
-	}
-	
-	public static Result callWithREST() {
-		return ok();
 	}
 	
 	public static Result callWithRMI() {

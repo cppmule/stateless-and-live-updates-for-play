@@ -10,18 +10,20 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Cache Demo
 GET		/cache						controllers.CacheDemo.index()
-GET		/cache/uuidhome				controllers.CacheDemo.uuidhome()
+GET		/cache/uuidhome			controllers.CacheDemo.uuidhome()
 GET		/cache/getuuid				controllers.CacheDemo.getUUID()
-GET		/cache/readuuid				controllers.CacheDemo.readUUIDFromSession()
-GET		/cache/destroysession		controllers.CacheDemo.destroySession()
-GET		/cache/destroycache			controllers.CacheDemo.destroyCache()
-GET		/cache/setincacheuuid		controllers.CacheDemo.setValueInCacheWithUUID()
+GET		/cache/readuuid			controllers.CacheDemo.readUUIDFromSession()
+GET		/cache/destroysession	controllers.CacheDemo.destroySession()
+GET		/cache/destroycache		controllers.CacheDemo.destroyCache()
+GET		/cache/setincacheuuid	controllers.CacheDemo.setValueInCacheWithUUID()
 GET		/cache/setincache			controllers.CacheDemo.setValueInGlobalCache()
-GET		/cache/getincacheuuid		controllers.CacheDemo.getValueInCacheWithUUID()
+GET		/cache/getincacheuuid	controllers.CacheDemo.getValueInCacheWithUUID()
 GET		/cache/getincache			controllers.CacheDemo.getValueInGlobalCache()
 
 
 # Connector Demo
 GET		/connector/soap			controllers.ConnectorCtrl.callWithSOAP()
+GET		/connector/form			controllers.ConnectorCtrl.ejbform()
+GET		/connector/restform		controllers.ConnectorCtrl.callWithRESTForm()
 GET		/connector/rest			controllers.ConnectorCtrl.callWithREST()
-GET		/connector/rmi				controllers.ConnectorCtrl.callWithRMI()
+GET		/connector/springremote	controllers.ConnectorCtrl.callWithSpringRemote()

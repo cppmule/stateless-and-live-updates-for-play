@@ -40,7 +40,7 @@ public class MyResource {
     @Produces("text/plain")
     public String restInsertMessage(@PathParam("topic") String topic, @PathParam("content") String content) {
         long id = insertMessage(topic, content);
-        return "Inserted"+id;
+        return ""+id;
     }
     
     

@@ -1,0 +1,26 @@
+@(technic: String, articleForm: Form[Article])
+
+@import helper._
+
+@main("EJB") {
+    
+	<h1>Call to an EJB</h1>
+	<h2>
+		Call with a WebService SOAP
+	</h2>
+		@form(routes.ConnectorCtrl.callWithRESTForm()) {
+        
+	        <fieldset>
+	            @inputText(articleForm("topic"), '_label -> "Topic")
+	            @inputText(articleForm("content"), '_label -> "Content")	            
+	        </fieldset>
+	        <div class="actions">
+	            <input type="submit" value="Post the article" class="btn primary">
+	        </div>
+        
+    	}
+    	
+    	
+ 	</p> 	
+    
+}

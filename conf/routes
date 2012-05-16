@@ -8,25 +8,30 @@ GET     /                           controllers.Application.index()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-# Cache Demo
-GET		/cache					controllers.CacheDemo.index()
-GET		/cache/uuidhome			controllers.CacheDemo.uuidhome()
-GET		/cache/getuuid			controllers.CacheDemo.getUUID()
-GET		/cache/readuuid			controllers.CacheDemo.readUUIDFromSession()
-GET		/cache/destroysession	controllers.CacheDemo.destroySession()
-GET		/cache/destroycache		controllers.CacheDemo.destroyCache()
-GET		/cache/setincacheuuid	controllers.CacheDemo.setValueInCacheWithUUID()
-GET		/cache/setincache		controllers.CacheDemo.setValueInGlobalCache()
-GET		/cache/getincacheuuid	controllers.CacheDemo.getValueInCacheWithUUID()
-GET		/cache/getincache		controllers.CacheDemo.getValueInGlobalCache()
-GET		/session				controllers.SessionDemo.index()
-GET		/session/setinsession	controllers.SessionDemo.setValueInSession()
-GET		/session/getinsession	controllers.SessionDemo.getValueInSession()
+# Basic session demo
+GET		/session					controllers.SessionDemo.index()
+GET		/session/setinsession		controllers.SessionDemo.setValueInSession()
+GET		/session/getinsession		controllers.SessionDemo.getValueInSession()
+GET		/session/destroysession		controllers.SessionDemo.destroySession()
+
+# Distributed cache demo
+GET		/cache						controllers.CacheDemo.index()
+GET		/cache/setincache			controllers.CacheDemo.setValueInGlobalCache()
+GET		/cache/getincache			controllers.CacheDemo.getValueInGlobalCache()
+GET		/cache/destroycache			controllers.CacheDemo.destroyCache()
+
+# Cache as session demo
+GET		/cacheas					controllers.CacheAsSessionDemo.index()
+GET		/cacheas/getuuid			controllers.CacheAsSessionDemo.getUUID()
+GET		/cacheas/readuuid			controllers.CacheAsSessionDemo.readUUIDFromSession()
+GET		/cacheas/setincacheuuid		controllers.CacheAsSessionDemo.setValueInCacheWithUUID()
+GET		/cacheas/getincacheuuid		controllers.CacheAsSessionDemo.getValueInCacheWithUUID()
+GET		/cacheas/destroysession		controllers.CacheAsSessionDemo.destroySession()
 
 
 # Connector Demo
-GET		/connector/soap			controllers.ConnectorCtrl.callWithSOAP()
-GET		/connector/form			controllers.ConnectorCtrl.ejbform()
-GET		/connector/restform		controllers.ConnectorCtrl.callWithRESTForm()
-GET		/connector/rest			controllers.ConnectorCtrl.callWithREST()
-GET		/connector/springremote	controllers.ConnectorCtrl.callWithSpringRemote()
+GET		/connector/soap				controllers.ConnectorCtrl.callWithSOAP()
+GET		/connector/form				controllers.ConnectorCtrl.ejbform()
+GET		/connector/restform			controllers.ConnectorCtrl.callWithRESTForm()
+GET		/connector/rest				controllers.ConnectorCtrl.callWithREST()
+GET		/connector/springremote		controllers.ConnectorCtrl.callWithSpringRemote()

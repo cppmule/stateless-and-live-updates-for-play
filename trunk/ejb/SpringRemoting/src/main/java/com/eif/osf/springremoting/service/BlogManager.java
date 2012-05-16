@@ -38,7 +38,7 @@ public class BlogManager implements BlogManagerInt {
             em.flush();
             em.getTransaction().commit();
             return msg.getId();
-        } catch (Exception ex) 
+        } catch (Exception ex) { 
             System.out.println(ex.getMessage());
             return -1;
         }

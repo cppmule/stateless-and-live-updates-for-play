@@ -1,0 +1,64 @@
+@(title: String, time: String, valueForm: Form[SessionValue], message: String)
+
+@import helper._
+
+@main(title) {
+    
+	<h1>@title</h1>
+	<h2>
+		Demonstration of the Play framework default session mecanism
+	</h2>
+	<p>
+		<ul>
+			<li><a href="/">Go to home page</a></li>
+			<li><a href="/cache">Go to the distributed cache home page</a></li>
+			<li><a href="/cacheas">Go to distributed cache as session demo page</a></li>
+		</ul>
+	</p>
+	<p>
+		Message received for the last action (@time):
+	</p>
+	<p class="infomessage">		
+		@message
+	</p>
+
+ 	
+ 	<h3>Set something in the session</h3>
+ 	<p>The session used by Play is the cookie on the client side. </p>
+	<p>
+		
+		@form(routes.SessionDemo.setValueInSession()) {
+        
+	        <fieldset>
+	            @inputText(valueForm("key"), '_label -> "key to use")
+	            @inputText(valueForm("value"), '_label -> "value to set in the session")
+	        </fieldset>
+	        <div class="actions">
+	            <input type="submit" value="Set the key:value in the session" class="btn primary">
+	        </div>
+        
+    	}
+ 	</p>
+ 	
+ 	<h3>Read something from the session</h3>
+ 	<p>Then read something in the cookies</p>
+	<p>
+		@form(routes.SessionDemo.getValueInSession()) {
+        
+	        <fieldset>
+	            @inputText(valueForm("key"), '_label -> "key to use")
+	        </fieldset>
+	        <div class="actions">
+	            <input type="submit" value="Read the value in the session" class="btn primary">
+	        </div>
+        
+    	}
+ 	</p>
+ 	
+ 	<h3>Destroy the session</h3>
+	<p>
+		<a href="/cacheas/destroysession">Destroy the session</a>
+ 	</p>
+ 	
+    
+}

@@ -17,6 +17,12 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.util.*;
 import java.net.URI;
+import org.w3c.dom.Document;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.eif.osf.springremoting.service.BlogManagerInt;
+
+
 
 
 public class ConnectorCtrl extends Controller {
@@ -26,6 +32,7 @@ public class ConnectorCtrl extends Controller {
 	
 	
 	public static Result callWithSOAP() {
+		
 		return ok();		
 	}
 	
@@ -105,6 +112,10 @@ public class ConnectorCtrl extends Controller {
 	}
 	
 	public static Result callWithSpringRemote() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("rmi-client-context.xml");
+ 		BlogManagerInt blog = (BlogManagerInt) ctx.getBean("blogmanager");
+  		long id = blog.insertMessage("test", "content");
+  		System.out.println("RMI Call:" + id);
 		return ok();
 	}
 }

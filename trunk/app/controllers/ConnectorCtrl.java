@@ -16,6 +16,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.util.*;
+import java.net.URI;
 
 
 public class ConnectorCtrl extends Controller {
@@ -47,7 +48,7 @@ public class ConnectorCtrl extends Controller {
 		try {
  
 			Client client = Client.create();
-	 		String urlstr = "http://localhost:8080/RESTfulEJB/manager/myresource/insert/"+topic+"/"+content;
+	 		URI uristr = new URI("http://localhost:8080/RESTfulEJB/manager/myresource/insert/"+topic+"/"+content);
 	 
 			WebResource webResource = client
 			   .resource("http://localhost:8080/RESTfulEJB/manager/myresource/insert/test/ici");
@@ -61,10 +62,9 @@ public class ConnectorCtrl extends Controller {
 			}
 	 
 			output = response.getEntity(String.class);
-	 
-			System.out.println("Output from Server .... \n");
+ 			System.out.println("Output from Server .... \n");
 			System.out.println(output);
- 
+			
 	  } catch (Exception e) {
  
 			e.printStackTrace();

@@ -15,7 +15,19 @@
 	            @inputText(articleForm("content"), '_label -> "Content")	            
 	        </fieldset>
 	        <div class="actions">
-	            <input type="submit" value="Post the article" class="btn primary">
+	            <input type="submit" value="Post the article (REST)" class="btn primary">
+	        </div>
+        
+    	}
+    	
+    	@form(routes.ConnectorCtrl.callWithRMIForm()) {
+        
+	        <fieldset>
+	            @inputText(articleForm("topic"), '_label -> "Topic")
+	            @inputText(articleForm("content"), '_label -> "Content")	            
+	        </fieldset>
+	        <div class="actions">
+	            <input type="submit" value="Post the article (RMI)" class="btn primary">
 	        </div>
         
     	}

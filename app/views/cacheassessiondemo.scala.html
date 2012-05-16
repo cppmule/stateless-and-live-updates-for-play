@@ -1,0 +1,78 @@
+@(title: String, time: String, valueForm: Form[UUIDCacheValue], message: String)
+
+@import helper._
+
+@main(title) {
+    
+	<h1>@title</h1>
+	<h2>
+		Demonstration of the distributed session
+	</h2>
+	<p>
+		<ul>
+			<li><a href="/">Go to home page</a></li>
+			<li><a href="/cache">Go to the distributed cache demo page</a></li>
+			<li><a href="/session">Go to the session demo page</a><br/></li>
+		</ul>
+	</p>
+	<p>
+		Message received for the last action (@time):
+	</p>
+	<p class="infomessage">		
+		@message
+	</p>
+    
+    <h3>Get an UUID</h3>
+	<p>
+		<a href="/cacheas/getuuid">Get an UUID</a>
+ 	</p>
+ 	
+ 	<h3>Read the UUID</h3>
+	<p>
+		<a href="/cacheas/readuuid">Read the UUID on the session</a>
+ 	</p>
+ 	
+ 	<h3>Destroy the session</h3>
+	<p>
+		<a href="/cacheas/destroysession">Destroy the session</a>
+ 	</p>
+ 	
+ 	<h3>Set the cache for the current UUID</h3>
+	<p>
+		
+		@form(routes.CacheAsSessionDemo.setValueInCacheWithUUID()) {
+        
+	        <fieldset>
+	            @inputText(valueForm("value"), '_label -> "Value to set in the cache for a given key (testkey)")
+	        </fieldset>
+	        <div class="actions">
+	            <input type="submit" value="Set the value in the cache" class="btn primary">
+	        </div>
+        
+    	}
+ 	</p>
+ 	
+ 	<h3>Set the cache for a given UUID</h3>
+	<p>
+		
+		@form(routes.CacheAsSessionDemo.setValueInCacheWithUUID()) {
+        
+	        <fieldset>
+	            @inputText(valueForm("value"), '_label -> "Value to set in the cache")
+	            @inputText(valueForm("uuid"), '_label -> "UUID to use")
+	        </fieldset>
+	        <div class="actions">
+	            <input type="submit" value="Set the value in the cache" class="btn primary">
+	        </div>
+        
+    	}
+		
+ 	</p>
+ 	
+ 	<h3>Read the cache</h3>
+	<p>
+		<a href="/cacheas/getincacheuuid">Read the value set in the cache for the current UUID</a>
+ 	</p>
+ 	
+    
+}

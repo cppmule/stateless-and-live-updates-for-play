@@ -30,7 +30,7 @@ GET		/cacheas/destroysession		controllers.CacheAsSessionDemo.destroySession()
 
 
 # Connector Demo
-GET		/connector/soap				controllers.ConnectorCtrl.callWithSOAP()
+GET		/connector/rmiform			controllers.ConnectorCtrl.callWithRMIForm()
 GET		/connector/form				controllers.ConnectorCtrl.ejbform()
 GET		/connector/restform			controllers.ConnectorCtrl.callWithRESTForm()
 GET		/connector/rest				controllers.ConnectorCtrl.callWithREST()

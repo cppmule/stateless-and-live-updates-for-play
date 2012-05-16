@@ -70,7 +70,7 @@ public class CacheDemo extends Controller {
 		//WHAT TO DO HERE?
 		return ok(cachedemo
 				.render(pageTitle, getCurrentTime(), gcForm,
-						"The cache has been destroyed (NOTE REALLY...)"));
+						"The cache has been destroyed (NOT REALLY...)"));
 	}
 
 	public static Result setValueInGlobalCache(){

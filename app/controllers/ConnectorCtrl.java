@@ -111,11 +111,28 @@ public class ConnectorCtrl extends Controller {
 	  return ok(ejbconnector.render(output));
 	}
 	
+	public static Result callWithRMIForm() {
+		Form<Article> form = form(Article.class).bindFromRequest();
+		if (form.hasErrors()) {
+			return badRequest(ejbconnectorform.render("RMI", form));
+		}
+
+		String topic = form.get().topic;
+		String content = form.get().content;
+		
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("rmi-client-context.xml");
+ 		BlogManagerInt blog = (BlogManagerInt) ctx.getBean("blogmanager");
+  		long id = blog.insertMessage(topic, content);
+  		String output = id+"";
+		return ok(ejbconnector.render(output));
+	}
+	
+	
 	public static Result callWithSpringRemote() {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("rmi-client-context.xml");
  		BlogManagerInt blog = (BlogManagerInt) ctx.getBean("blogmanager");
   		long id = blog.insertMessage("test", "content");
-  		System.out.println("RMI Call:" + id);
-		return ok();
+  		String output = id+"";
+		return ok(ejbconnector.render(output));
 	}
 }

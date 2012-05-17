@@ -18,7 +18,7 @@ public class CacheAsSessionDemo extends Controller {
 
 	private static final String pageTitle = "Cache as session demo - Node 1";
 	private static final String uuidCacheKey = "testkey";
-	private static Form<UUIDCacheValue> defaultForm = form(UUIDCacheValue.class);
+	private static Form<UUIDValueModel> defaultForm = form(UUIDValueModel.class);
 	
 	
 	public static String getCurrentTime(){
@@ -67,7 +67,7 @@ public class CacheAsSessionDemo extends Controller {
 
 	public static Result setValueInCacheWithUUID() {
 
-		Form<UUIDCacheValue> form = form(UUIDCacheValue.class).bindFromRequest();
+		Form<UUIDValueModel> form = form(UUIDValueModel.class).bindFromRequest();
 		if (form.hasErrors()) {
 			return badRequest(cacheassessiondemo.render(pageTitle, getCurrentTime(), form,
 					"The value form contains mistakes"));
@@ -78,7 +78,7 @@ public class CacheAsSessionDemo extends Controller {
 		// the uuid use to differenciate elements in the global cache
 		String uuidToUse = form.get().uuid;
 
-		if (uuidToUse==null) {
+		if (uuidToUse == null || uuidToUse.equals("")) {
 			String uuid = session("uuid");
 			if (uuid == null || uuid.equals("")) { 
 				return ok(cacheassessiondemo

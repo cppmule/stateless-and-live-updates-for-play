@@ -1,0 +1,22 @@
+@(title: String, time: String, message: String)
+
+@import helper._
+
+@main(title) {
+    
+	<h1>@title</h1>
+	<h2>
+		Live routes update - Index
+	</h2>
+	<p>
+		<ul>
+			<li><a href="/routesdemo/statea">Go to the next step (From Index to State A)</a></li>
+		</ul>
+	</p>
+	<p>
+		Message received for the last action (@time):
+	</p>
+	<p class="infomessage">		
+		@message
+	</p>  
+}

@@ -28,6 +28,11 @@ GET		/cacheas/setincacheuuid		controllers.CacheAsSessionDemo.setValueInCacheWith
 GET		/cacheas/getincacheuuid		controllers.CacheAsSessionDemo.getValueInCacheWithUUID()
 GET		/cacheas/destroysession		controllers.CacheAsSessionDemo.destroySession()
 
+# Routes update demo
+GET		/routesdemo					controllers.RoutesUpdateDemo.index()
+GET		/routesdemo/statea			controllers.RoutesUpdateDemo.stateA()
+GET		/routesdemo/stateb			controllers.RoutesUpdateDemo.stateB()
+GET		/routesdemo/statec			controllers.RoutesUpdateDemo.stateC()
 
 # Connector Demo
 GET		/connector/rmiform			controllers.ConnectorCtrl.callWithRMIForm()

@@ -17,7 +17,7 @@ import play.mvc.*;
 public class CacheDemo extends Controller {
 
 	private static final String pageTitle = "Distributed cache demo - Node 1";
-	private static Form<GlobalCacheValue> defaultForm = form(GlobalCacheValue.class);
+	private static Form<KeyValueModel> defaultForm = form(KeyValueModel.class);
 	
 	
 	public static String getCurrentTime(){
@@ -39,7 +39,7 @@ public class CacheDemo extends Controller {
 
 	public static Result setValueInGlobalCache(){
 		
-		Form<GlobalCacheValue> form = form(GlobalCacheValue.class).bindFromRequest();
+		Form<KeyValueModel> form = form(KeyValueModel.class).bindFromRequest();
 		if (form.hasErrors()) {
 			return badRequest(cachedemo.render(pageTitle, getCurrentTime(), form,
 					"The form contains mistakes"));
@@ -66,7 +66,7 @@ public class CacheDemo extends Controller {
 	
 	public static Result getValueInGlobalCache() {
 			
-		Form<GlobalCacheValue> form = form(GlobalCacheValue.class).bindFromRequest();
+		Form<KeyValueModel> form = form(KeyValueModel.class).bindFromRequest();
 		if (form.hasErrors()) {
 			return badRequest(cachedemo.render(pageTitle, getCurrentTime(), form,
 					"The form contains mistakes"));

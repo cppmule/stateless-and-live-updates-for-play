@@ -17,7 +17,7 @@ import play.mvc.*;
 public class SessionDemo extends Controller {
 
 	private static final String pageTitle = "Play framework session demo";
-	private static Form<SessionValue> defaultForm = form(SessionValue.class);
+	private static Form<KeyValueModel> defaultForm = form(KeyValueModel.class);
 	
 	
 	public static String getCurrentTime(){
@@ -32,7 +32,7 @@ public class SessionDemo extends Controller {
 
 	public static Result setValueInSession(){
 		
-		Form<SessionValue> form = form(SessionValue.class).bindFromRequest();
+		Form<KeyValueModel> form = form(KeyValueModel.class).bindFromRequest();
 		if (form.hasErrors()) {
 			return badRequest(sessiondemo.render(pageTitle, getCurrentTime(), form,
 					"The form contains mistakes"));
@@ -60,7 +60,7 @@ public class SessionDemo extends Controller {
 
 	public static Result getValueInSession(){
 	
-		Form<SessionValue> form = form(SessionValue.class).bindFromRequest();
+		Form<KeyValueModel> form = form(KeyValueModel.class).bindFromRequest();
 		if (form.hasErrors()) {
 			return badRequest(sessiondemo.render(pageTitle, getCurrentTime(), form,
 					"The form contains mistakes"));

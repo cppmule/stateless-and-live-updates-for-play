@@ -70,7 +70,7 @@ public class SessionDemo extends Controller {
 						"A key is needed to get something in the session!"));
 		}
 	
-		// set in the session
+		// get in the session
 		String value = session(key);
 		
 		return ok(sessiondemo.render(pageTitle, TimeHelper.getCurrentTime(), form, "The value " + value

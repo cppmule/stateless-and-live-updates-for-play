@@ -28,7 +28,7 @@ public class CacheDemo extends Controller {
 		//WHAT TO DO HERE?
 		return ok(cachedemo
 				.render(pageTitle, TimeHelper.getCurrentTime(), defaultForm,
-						"The cache has been destroyed (NOT REALLY...)"));
+						"The cache has not been destroyed... It is not possible with the default Play interface used for the cache."));
 	}
 
 	public static Result setValueInGlobalCache(){

@@ -21,13 +21,14 @@
 		
 	<cacheManagerPeerListenerFactory
 		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
-		properties="hostName=localhost, port=40015, socketTimeoutMillis=2000"/>
+		properties="hostName=localhost, port=40033, socketTimeoutMillis=2000"/>
 		<!-- the port needs to be different on every node! Otherwise, all the configuration can be identical on every node -->
 
 	<diskStore path="java.io.tmpdir"/>
-	<!-- the tmp directory needs to be different for every node on the same machine -->
 	
-	<defaultCache name="distribCache"
+	
+	<!-- the cache name  needs to be different for every node on the same machine -->
+	<defaultCache name="distribCache1"
 		maxEntriesLocalHeap="10"
 		eternal="false"
 		timeToIdleSeconds="100"

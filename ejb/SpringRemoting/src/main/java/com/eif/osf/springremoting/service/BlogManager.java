@@ -4,10 +4,11 @@
  */
 package com.eif.osf.springremoting.service;
 
-import com.eif.osf.springremoting.models.MessageBis;
+import com.eif.osf.springremoting.models.Message;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.NotSupportedException;
@@ -19,28 +20,30 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author clementval
  */
+@Stateless
+@Transactional
 public class BlogManager implements BlogManagerInt {
+    private static int counter=0;
     
-    @PersistenceContext
+    @PersistenceContext(name="com.eif.osf_SpringRemoting_war_1.0-SNAPSHOTPU")
     EntityManager em;
     
     
     public long insertMessage(String topic, String content) {
-        try {
-            em.getTransaction().begin();
-            MessageBis msg = new MessageBis();
+        try {  
+            Message msg = new Message();
             msg.setTopic(topic);
             msg.setContent(content);
             
             if(em == null)
                 return 20;
-            em.persist(msg);
+            em.merge(msg);
             em.flush();
-            em.getTransaction().commit();
             return msg.getId();
         } catch (Exception ex) { 
+            ex.printStackTrace();
             System.out.println(ex.getMessage());
-            return -1;
+            return counter++;
         }
     }
     

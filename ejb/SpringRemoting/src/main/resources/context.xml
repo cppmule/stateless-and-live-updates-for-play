@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:jee="http://www.springframework.org/schema/jee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:tx="http://www.springframework.org/schema/tx"
 xmlns:aop="http://www.springframework.org/schema/aop"
 xsi:schemaLocation="http://www.springframework.org/schema/beans 
-http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
-      <property name="persistenceUnitName" value="com.eif.osf_SpringRemoting_war_1.0-SNAPSHOTPU"/>
+  http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+  http://www.springframework.org/schema/aop 
+  http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+  http://www.springframework.org/schema/context 
+  http://www.springframework.org/schema/context/spring-context-2.5.xsd
+  http://www.springframework.org/schema/tx 
+  http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+  http://www.springframework.org/schema/jee 
+  http://www.springframework.org/schema/jee/spring-jee-2.0.xsd"
+>
+    
+
+
+    <bean id="entityManagerFactory"
+        class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="com.eif.osf_SpringRemoting_war_1.0-SNAPSHOTPU" />
     </bean>
+
+    <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
+
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+    
     
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
     
-    <bean id="blogmanager" class="com.eif.osf.springremoting.service.BlogManager" />
+    <bean id="blogmanager" class="com.eif.osf.springremoting.service.BlogManager"/>
+    
     <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
 	<!-- does not necessarily have to be the same name as the bean to be exported -->
 	<property name="serviceName" value="BlogService"/>

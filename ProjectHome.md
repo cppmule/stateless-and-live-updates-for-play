@@ -1,0 +1,1 @@
+This project is a simple test about some interesting elements in the PlayFramework for a course on master degree in computer sciences.
